@@ -1,108 +1,90 @@
-@extends('layouts.app')
+<div class="row print-pdf">
+    <div class="report-page">
+        <div class="col-md-12">
+            <h2 class="text-center" colspan="6"  style="text-transform: uppercase; margin: 30px; text-align: center;">LAPORAN PENJUALAN HARIAN</h2>
+      <tr>
+        <td colspan="3">Penerimaan dari Tanggal {{ $tgl}}</td>
+      </tr>
+       <table class="table table-bordered" >
+            <tr>
+            <th colspan="1"  style="background-color: #d1e0e0; border:1px solid "><b>No</b></th>
+            <th colspan="1"  style="background-color: #d1e0e0; border:1px solid ">Nama Customer</th>
+            <th colspan="1"  style="background-color: #d1e0e0; border:1px solid ">Kode Order</th>
+            <th colspan="1"  style="background-color: #d1e0e0; border:1px solid ">QTY</th>
+            <th colspan="1"  style="background-color: #d1e0e0; border:1px solid ">Status</th>
+            <th colspan="1"  style="background-color: #d1e0e0; border:1px solid ">Tanggal</th>
+            <th colspan="1"  style="background-color: #d1e0e0; border:1px solid ">Tipe</th>
+            <th colspan="1"  style="background-color: #d1e0e0; border:1px solid ">Total</th>
+            <th colspan="1"  style="background-color: #d1e0e0; border:1px solid ">Total Laba</th>
+            <th colspan="1"  style="background-color: #d1e0e0; border:1px solid ">code barang</th> 
+            <th colspan="1"  style="background-color: #d1e0e0; border:1px solid ">nama barang</th> 
+            <th colspan="1"  style="background-color: #d1e0e0; border:1px solid ">qty</th> 
+            <th colspan="1"  style="background-color: #d1e0e0; border:1px solid ">harga </th>
+            <th colspan="1"  style="background-color: #d1e0e0; border:1px solid ">subtotal </th>
+            <th colspan="1"  style="background-color: #d1e0e0; border:1px solid ">laba</th> 
+            </tr>
 
-@section('content')
+            @foreach($lapHarEx as $key=> $item)
+            <tr>
+            <td colspan="1" style="border:1px solid ">{{ $key+1 }}</td>
+            <td colspan="1" style="border:1px solid ">{{ $item->nama_customer}}</td>
+            <td colspan="1" style="border:1px solid ">{{ $item->code_order }}</td>
+            <td colspan="1" style="border:1px solid ">{{ $item->jumlah_barang  }}</td>
+            <td colspan="1" style="border:1px solid ">{{ $item->status  }}</td>
+            <td colspan="1" style="border:1px solid ">{{ $item->tanggal }}</td>
+            <td colspan="1" style="border:1px solid ">{{ $item->Pembayaran->tipe_pembayaran }}</td>
+            <td colspan="1" style="border:1px solid ">{{ $item->total }}</td>
+            <td colspan="1" style="border:1px solid ">{{ $item->total_laba }}</td>
 
+            @foreach($item->OrderItem as $cek=>$val)
+              @if($cek == 0)
+              <td colspan="1"  style="border:1px solid " >{{$val->code_barang}}</td>
+              <td colspan="1"  style="border:1px solid " >{{$val->nama_barang}}</td>
+              <td colspan="1"  style="border:1px solid " >{{$val->qty}}</td>
+              <td colspan="1"  style="border:1px solid " >{{$val->harga}}</td>
+              <td colspan="1"  style="border:1px solid " >{{$val->subtotal}}</td>
+              <td colspan="1"  style="border:1px solid " >{{$val->laba}}</td>
 
-<div class="content">
+              
 
-<h1>Laporan Harian </h1>
-        <div class="clearfix"></div>
+              @elseif($cek > 0)
 
-        @include('flash::message')
+                <tr>
 
-        <div class="clearfix"></div>
-        <div class="box box-primary">
-            <div class="box-body">
- 
- <!-- OrderDetai -->
-<div class="form-group col-sm-12">
-    <div class="box-body table-responsive no-padding"  >
-      <table class="table table-bordered" id="crud_table" border="3">
-            <thead>
-               
-                <th>Nama Customer</th>
-                <th>Kode Order</th>
-                <th>QTY</th>
-                <th>Subtotal</th>
-                <th>Status</th>
-                <th>Tanggal</th>
-                <th>Tipe</th>
-            </thead>
-         @foreach($lapHar as $key=>$item)
-       {{--dd($item)--}}
-          <tr class="trbody">
-           <td>
-           {!! Form::text('nama_customer',$item->nama_customer, ['class' => 'form-control jumlah','id'=>'jumlah','readonly'] ) !!} 
-            </td>
-           <td>
-           {!! Form::text('code_order',$item->code_order, ['class' => 'form-control jumlah','id'=>'jumlah','readonly'] ) !!}  
-           </td>
-           <td>
-           {!! Form::text('jumlah_barang',$item->jumlah_barang, ['class' => 'form-control jumlah','id'=>'jumlah','readonly'] ) !!} 
-            </td>
-           <td>{!! Form::text('total',$item->total, ['class' => 'form-control jumlah','id'=>'jumlah','readonly'] ) !!}  </td>
-           <td>{!! Form::text('status',$item->status, ['class' => 'form-control jumlah','id'=>'jumlah','readonly'] ) !!}  </td>
-            <td>{!! Form::text('tanggal',$item->tanggal, ['class' => 'form-control jumlah','id'=>'jumlah','readonly'] ) !!}  </td>
-            <td>{!! Form::text('tipe',$item->Pembayaran->tipe_pembayaran, ['class' => 'form-control','readonly'] ) !!}  </td>
+                    <td colspan="1"  style="border:1px solid "></td>
+                    <td colspan="1" style="border:1px solid "></td>
+                    <td colspan="1" style="border:1px solid "></td>
+                    <td colspan="1" style="border:1px solid "></td>
+                    <td colspan="1" style="border:1px solid "></td>
+                    <td colspan="1" style="border:1px solid "></td>
+                    <td colspan="1" style="border:1px solid "></td>
+                    <td colspan="1" style="border:1px solid "></td>
+                    <td colspan="1" style="border:1px solid "></td>
+                    <td colspan="1"  style="border:1px solid " >{{$val->code_barang}}</td>
+                    <td colspan="1"  style="border:1px solid " >{{$val->nama_barang}}</td>
+                    <td colspan="1"  style="border:1px solid " >{{$val->qty}}</td>
+                    <td colspan="1"  style="border:1px solid " >{{$val->harga}}</td>
+                    <td colspan="1"  style="border:1px solid " >{{$val->subtotal}}</td>
+                    <td colspan="1"  style="border:1px solid " >{{$val->laba}}</td>
+                    
+                  </tr>
+                  @endif
+                
+                @endforeach
+                </tr>
+                @endforeach
+                <tr>
+                  <th  colspan="1"  style="background-color: #d1e0e0; border:1px solid ">Jumlah</th>
+                  <th  colspan="1"  style="background-color: #d1e0e0; border:1px solid ">Total</th>
+                  <th  colspan="1"  style="background-color: #d1e0e0; border:1px solid ">Total Laba</th>
+                </tr>
+                <tr>
+                  <td colspan="1"  style=" border:1px solid ">{{$totBar}}</td>
+                  <td colspan="1"  style=" border:1px solid ">{{number_format($totHar, 2)}}</td>
+                  <td colspan="1"  style=" border:1px solid ">{{number_format($totLab, 2)}}</td>
+                </tr>
 
-            <thead>          
-                  <th>code barang</th> 
-                  <th>nama barang</th> 
-                  <th>qty</th> 
-                  <th>harga </th>
-                  <th>subtotal </th>
-                  <!-- <th>laba</th>  -->
-            </thead>
-            @foreach($item->OrderItem as $k=>$val)
-              {{--dd($val)--}}
-              <tr>
-                  <td>{{$val->code_barang}}</td>
-                  <td>{{$val->nama_barang}}</td>
-                  <td>{{$val->qty}}</td>
-                  <td>{{$val->harga}}</td>
-                  <td>{{$val->subtotal}}</td>
-              </tr>
-            @endforeach
-           
-          </tr>
-          @endforeach
-
-
-    </table>
-   </div>
- </div>
-
-
-<!-- Jumlah barang  -->
-<div class="form-group col-sm-6 ">
-    {!! Form::label('totBar', 'Total Barang :') !!}
-    {!! Form::text('totBar',$totBar, ['class' => 'form-control jumlah','id'=>'jumlah','readonly'] ) !!}  
-</div>
-
-
-<!-- TOTAL Harga -->
-<div class="form-group col-sm-6 ">
-    {!! Form::label('totHar', 'Total :') !!}
-    {!! Form::text('totHar',number_format($totHar, 2)  , ['class' => 'form-control total','id'=>'total','readonly'] ) !!}
-</div>
-
-<!-- TOTAL Laba -->
-<div class="form-group col-sm-6 ">
-    {!! Form::label('totLab', 'Laba :') !!}
-    {!! Form::text('totLab',number_format($totLab, 2)  , ['class' => 'form-control totalLaba','id'=>'totalLaba','readonly'] ) !!}
-</div>
-
-  {!! Form::open(['url' => 'excelPJH']) !!}
-<div class="form-group col-sm-6">
-    {!! Form::hidden('tgl',$tgl,['class'=>'form-control'])!!}
-  <!-- <a  class="btn btn-success">Export Excel</a> -->
-  {!! Form::submit('Export', ['class' => 'btn btn-success']) !!}
-
-</div>
-
-{!! Form::close() !!}
-                    </div>
-            </div>
-        </div>
+           </table>
+         </div>
     </div>
-@endsection
+</div>

@@ -92,7 +92,8 @@
     {!! Form::text('totLab',number_format($totLab, 2)  , ['class' => 'form-control totalLaba','id'=>'totalLaba','readonly'] ) !!}
 </div>
 
-  {!! Form::open(['url' => 'excelPJH']) !!}
+  {{-- Form::open(['url' => 'excelPJH']) --}}
+  {!! Form::open(['route'=>'reports.lapHarSheet'])!!}
 <div class="form-group col-sm-6">
     {!! Form::hidden('tgl',$tgl,['class'=>'form-control'])!!}
   <!-- <a  class="btn btn-success">Export Excel</a> -->

@@ -43,9 +43,11 @@ Route::get('barangJson','OrderController@barangAr');
 
 Route::resource('orderItems', 'OrderItemController');
 Route::resource('reports','ReportController');
-
+//laporanRoute
 Route::post('cekPJ','ReportController@lapHar');
-Route::post('excelPJH','ReportController@ExportExPJ');
+Route::post('excelPJH',['as'=>'reports.lapHarSheet','uses'=>'ReportController@ExportExPJ']);
+Route::post('cekPG','ReportController@lapPG');
+Route::post('excelPG',['as'=>'reports.lapPGSheet','uses'=>'ReportController@ExportExPG']);
 
 
 
@@ -53,8 +55,6 @@ Route::resource('pembayarans', 'PembayaranController');
 Route::get('pembayarans/create/{id}', 'PembayaranController@create');
 // Route::post('print','PembayaranController@print');
 
-Route::post('test','TestController@test');
-Route::get('coba','TestController@index');
 
  Route::post('/print', function(Request $request){
      if($request->ajax()){
