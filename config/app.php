@@ -64,7 +64,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Jakarta',//'UTC',
 
     /*
     |--------------------------------------------------------------------------
@@ -171,6 +171,7 @@ return [
         Yajra\Datatables\ButtonsServiceProvider::class,
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        Laratrust\LaratrustServiceProvider::class,
 
 
         /*
@@ -241,6 +242,7 @@ return [
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'Laratrust'   => Laratrust\LaratrustFacade::class,
 
 
     ],

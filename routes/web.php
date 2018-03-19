@@ -46,6 +46,8 @@ Route::resource('reports','ReportController');
 //laporanRoute
 Route::post('cekPJ','ReportController@lapHar');
 Route::post('excelPJH',['as'=>'reports.lapHarSheet','uses'=>'ReportController@ExportExPJ']);
+Route::post('cekPJB','ReportController@lapBul');
+Route::post('excelPJB',['as'=>'reports.lapBulSheet','uses'=>'ReportController@ExportExPJB']);
 Route::post('cekPG','ReportController@lapPG');
 Route::post('excelPG',['as'=>'reports.lapPGSheet','uses'=>'ReportController@ExportExPG']);
 
@@ -69,7 +71,7 @@ Route::get('pembayarans/create/{id}', 'PembayaranController@create');
 
                 $printer = new Printer($connector);
                 $printer -> text("================================\n");
-                $printer -> text("  Nyeruput Kopi Rasa Indonesia  \n");
+                $printer -> text("         Saung Cisadane  \n");
                 $printer -> text("================================\n");
                 $printer -> text("Code Order :" . $request->code_order . "\n");
                 $printer -> text("Tanggal    :" . $request->tanggal . "\n");

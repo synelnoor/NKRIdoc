@@ -3,19 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>NKRI Administrator</title>
+    <title>Saung Cisadane Administrator</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   {{-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.3.11/css/AdminLTE.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.3.11/css/skins/_all-skins.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/skins/square/_all.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">--}}
 
+<!-- local Css -->
+    <link rel="stylesheet" href="{{ asset('vendor/adminlte/plugins/bootstrap/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/adminlte/plugins/font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/adminlte/plugins/select2/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/adminlte/dist/css/AdminLTE.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/adminlte/dist/css/skins/_all-skins.css') }}">
     <!-- Ionicons -->
-   <!--  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> -->
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Date Picker -->
+    <link href="{{ asset('vendor/adminlte/plugins/datepicker/datepicker3.css') }}" rel="stylesheet">
+    <!-- Tags Input -->
+    <link href="{{ asset('vendor/adminlte/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css') }}" rel="stylesheet">
+    <!-- include Summernote -->
+    <link href="{{ asset('vendor/adminlte/plugins/summernote/summernote.css') }}" rel="stylesheet">
+    <!-- Date Time Picker -->
+    <link href="{{ asset('vendor/adminlte/plugins/datetimepicker/css/bootstrap-datetimepicker.css') }}" rel="stylesheet">
+    <!-- include Fancybox -->
+    <link href="{{ asset('vendor/adminlte/plugins/fancybox/jquery.fancybox.min.css') }}" rel="stylesheet">
+    <!-- include Fileuploader -->
+    <link rel="stylesheet" href="{{ asset('vendor/adminlte/plugins/fileuploader/jquery.fileuploader.css') }}">
+    <!-- include Multi-select -->
+    <link rel="stylesheet" href="{{ asset('vendor/adminlte/plugins/multi-select/css/multi-select.css') }}">
+
     
     
     @yield('css')
@@ -28,12 +49,12 @@
         <header class="main-header">
 
             <!-- Logo -->
-            <a href="{{URL('home')}}" class="logo" style="background-color:#994d00">
-                <b>NKRI</b>
+            <a href="{{URL('home')}}" class="logo" >
+                <b>Saung Cisadane</b>
             </a>
 
             <!-- Header Navbar -->
-            <nav class="navbar navbar-static-top" role="navigation" style="background-color:#994d00">
+            <nav class="navbar navbar-static-top" role="navigation" >
                 <!-- Sidebar toggle button-->
                 <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
                     <span class="sr-only">Toggle navigation</span>
@@ -112,7 +133,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{!! url('/') !!}">
-                    NKRI
+                   Saung Cisadane
                 </a>
             </div>
 
@@ -146,21 +167,51 @@
     @endif
 
     <!-- jQuery 3.1.1 -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    {{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/icheck.min.js"></script>
-
+     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <!-- AdminLTE App -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.3.11/js/app.min.js"></script>
-    <!-- <script src="https://unpkg.com/vue"></script>
- -->   
-    <script src="{{asset('js/autoComplete.js')}}"></script>
-
-
- <!--  <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.3.11/js/app.min.js"></script>--}}
     
+
+    <!-- script autocomplete -->
+    <script src="{{asset('js/autoComplete.js')}}"></script>
+      <!-- Javascript -->
+    <!-- jQuery 2.2.3 -->
+    <script src="{{ asset('vendor/adminlte/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
+
+    <!-- Bootstrap -->
+    <script src="{{ asset('vendor/adminlte/plugins//bootstrap/js/bootstrap.min.js') }}"></script>
+
+    <!-- Date Picker App -->
+    <script src="{{ asset('vendor/adminlte/plugins/datepicker/bootstrap-datepicker.js') }}"></script>
+
+    <!-- Date Time Picker -->
+    <script src="{{ asset('vendor/adminlte/plugins/datetimepicker/js/bootstrap-datetimepicker.min.js') }}"></script>
+
+    <!-- Tags Input -->
+    <script src="{{ asset('vendor/adminlte/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js') }}"></script>
+
+    <!-- Select2 -->
+    <script src="{{ asset('vendor/adminlte/plugins/select2/select2.min.js') }}"></script>
+
+    <!-- Summernote -->
+    <script src="{{ asset('vendor/adminlte/plugins/summernote/summernote.min.js') }}"></script>
+
+    <!-- Fancybox -->
+    <script src="{{ asset('vendor/adminlte/plugins/fancybox/jquery.fancybox.min.js') }}"></script>
+
+    <!-- Fileuploader -->
+    <script src="{{ asset('vendor/adminlte/plugins/fileuploader/jquery.fileuploader.min.js') }}"></script>
+
+    <!-- Multi-select -->
+    <script src="{{ asset('vendor/adminlte/plugins/multi-select/js/jquery.multi-select.js') }}"></script>
+
+    <!-- Quicksearch -->
+    <script src="{{ asset('vendor/adminlte/plugins/quicksearch/jquery.quicksearch.min.js') }}"></script>
+ 
     @yield('scripts')
     
 </body>
